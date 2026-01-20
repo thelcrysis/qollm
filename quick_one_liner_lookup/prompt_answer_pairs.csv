@@ -1,0 +1,38 @@
+
+List all python files in current working directory,ls -1 *.py 2>/dev/null
+List all python files in current working directory recursively,find . -type f -name "*.py" -print
+list all files larger than 5MiB,find . -type f -size +5M -print
+List all files,ls -laR
+What is currect time,date +'%Y-%m-%d %H:%M:%S'
+How many free space do I have left,df -h | grep "Avail" | awk '{print $2}'
+How many free space do I have left,df -h | grep '^Free' | awk '{print $5}'
+How many free space do I have left,df -h --output=avail / | tail -n1
+Get all models available locally for ollama,ollama list models
+Get all models available locally for ollama,``
+ls /opt/ollama/models || echo "No models found."
+``
+Get all models available locally for ollama,ollama list | awk '{print $1}'
+Get all models available locally for ollama,ollama list | awk '{print $1}'
+Get all models available locally for ollama,ollama list
+weather for zagreb,curl http://wttr.in/Zagreb
+weather for zagreb,curl http://wttr.in/Zagreb
+weather for zagreb,curl http://wttr.in/Zagreb
+Compress to zip every directory separately in a current working directory,find . -type d | xargs Zipify
+Compress to zip every directory separately in a current working directory,for d in */ ; do [ -d "$d" ] && zip -r "${d%/}.zip" "$d"; done
+delete all zip files in cwd,rm -f -- *.zip
+Compress to zip every directory separately in a current working directory,for d in */ ; do [ -d "$d" ] && zip -r "${d%/}.zip" "$d"; done
+list all ollama models,if command -v ollama >/dev/null 2>&1; then ollama list models; else echo "ollama not installed"; fi
+list models available in ollama locally,ollama list models
+list all AI available in ollama,ollama list
+list all commands available,compgen -c | sort -u
+get all linux commands available,compgen -c | sort -u
+list models available in ollama locally,ollama list
+list models available in ollama locally,ollama list
+list models available in ollama locally,``sh
+ls ~/.ollama/models
+``
+list models available in ollama locally,bash
+ls /opt/ollama/models
+what version of ollama do i have,sh
+ollama --version
+init git repo with existing files and existing repo on origin,git init; git remote add origin <repo-url>; git pull origin master
