@@ -4,20 +4,11 @@ List all python files in current working directory recursively,find . -type f -n
 list all files larger than 5MiB,find . -type f -size +5M -print
 List all files,ls -laR
 What is currect time,date +'%Y-%m-%d %H:%M:%S'
-How many free space do I have left,df -h | grep "Avail" | awk '{print $2}'
-How many free space do I have left,df -h | grep '^Free' | awk '{print $5}'
 How many free space do I have left,df -h --output=avail / | tail -n1
-Get all models available locally for ollama,ollama list models
-Get all models available locally for ollama,``
-ls /opt/ollama/models || echo "No models found."
-``
-Get all models available locally for ollama,ollama list | awk '{print $1}'
-Get all models available locally for ollama,ollama list | awk '{print $1}'
 Get all models available locally for ollama,ollama list
 weather for zagreb,curl http://wttr.in/Zagreb
 weather for zagreb,curl http://wttr.in/Zagreb
 weather for zagreb,curl http://wttr.in/Zagreb
-Compress to zip every directory separately in a current working directory,find . -type d | xargs Zipify
 Compress to zip every directory separately in a current working directory,for d in */ ; do [ -d "$d" ] && zip -r "${d%/}.zip" "$d"; done
 delete all zip files in cwd,rm -f -- *.zip
 Compress to zip every directory separately in a current working directory,for d in */ ; do [ -d "$d" ] && zip -r "${d%/}.zip" "$d"; done
@@ -30,9 +21,101 @@ list models available in ollama locally,ollama list
 list models available in ollama locally,ollama list
 list models available in ollama locally,``sh
 ls ~/.ollama/models
-``
 list models available in ollama locally,bash
 ls /opt/ollama/models
-what version of ollama do i have,sh
 ollama --version
 init git repo with existing files and existing repo on origin,git init; git remote add origin <repo-url>; git pull origin master
+print in terminal three dots,echo '...'
+print in terminal three dots,print three dots
+print in terminal three dots,.....
+print in terminal three dots,. . .
+print in terminal three dots,echo "..."
+wget https://huggingface.co/datasets/mecha-org/linux-command-dataset/raw/main/linuxcommands.json to a file named dataset.json,wget -O dataset.json https://huggingface.co/datasets/mecha-org/linux-command-dataset/raw/main/linuxcommands.json
+list all processes,ps aux
+list all processes but keep first 10 results,ps aux | head -n 10
+Compress the file data.txt using bzip2,bzip2 data.txt
+Run fdisk on SATA drive,sudo fdisk /dev/sdX
+Change to the directory /usr/local/var,cd /usr/local/var
+List all files with details, sorted by modification time, but show access time instead,find . -type f -printf "%A\t%p\n" | sort -k1
+Create a file called 'access.log' in /var/log,touch /var/log/access.log
+Compress the file data.txt using bzip2,bzip2 data.txt
+Run fdisk on SATA drive,fdisk /dev/sda
+Change to the directory /usr/local/var,cd /usr/local/var
+List all files with details, sorted by modification time, but show access time instead,ls -lt --time-style=access .
+Create a file called 'access.log' in /var/log,touch /var/log/access.log
+Redirect output to file,command > output.txt
+Schedule job at 6 PM only in December,To schedule a job at 6 PM every December, you can use
+Delay 2.75 minutes,sleep 165
+Query A record for google.com and use only IPv4,dig +short -4 google.com
+Run mtr to 8.8.8.8 and set maximum TTL to 80,mtr -M --maxttl=80 8.8.8.8
+Ping google.com with 512 byte packets and 10 times,ping -c 10 -s 512 google.com
+Traceroute to google.com using UDPLITE protocol,traceroute -4 -p 80 -l 32 google.com
+Change niceness of gvfs daemon,sudo renice -n -5 -p $(pidof -s gvfsd)
+Display disk usage for all files and directories, using block size of 16G,du -b --block-size=16G /path/to/directory | awk '{print $1/1073741824 " GB\t" $2}'
+Run atop and display only memory activity,top -b -n1 | grep "Memory"
+Delete test_group7,rm -rf /path/to/test_group7
+Switch to deployer,whoami | grep -q deployer || sudo usermod -aG deployer $USER; su - deployer
+Show only remote users,who | awk -F[[:space:]] '{if($4 != "console") print $1}'
+Compress the file data.txt using bzip2,bzip2 data.txt
+Run fdisk on SATA drive,sudo fdisk -l /dev/sda
+Change to the directory /usr/local/var,cd /usr/local/var
+List all files with details, sorted by modification time, but show access time instead,ls --time=atime --date=long-iso
+Create a file called 'access.log' in /var/log,touch /var/log/access.log
+Redirect output to file,echo "your_command_here" > output.sh && chmod +x output.sh
+Schedule job at 6 PM only in December,(sleep 34200; echo "your_command_here") | (crontab -l; echo "30 18 1-31 12 /bin/bash -s" ; crontab -)
+Delay 2.75 minutes,sleep 165
+Query A record for google.com and use only IPv4,dig +short A -4 google.com
+Run mtr to 8.8.8.8 and set maximum TTL to 80,mtr --max-ttl=80 8.8.8.8
+Ping google.com with 512 byte packets and 10 times,ping -c 10 -s 512 google.com
+Traceroute to google.com using UDPLITE protocol,traceroute -m 30 -I google.com
+Change niceness of gvfs daemon,sudo nice -n 10 /usr/lib/gvfs/gvfsd
+Display disk usage for all files and directories, using block size of 16G,du -sh --block-size=16G *
+Run atop and display only memory activity,atop -M
+Delete test_group7,rm test_group7
+Switch to deployer,whoami | grep -q "deployer" || su - deployer
+Show only remote users,who -u | awk '{print $1}' | sort | uniq | grep -v
+echo last created csv file and pipeline that to command called clipboard,ls -t *.csv | head -n 1 | xclip -selection clipboard
+Compress the file data.txt using bzip2,bzip2 data.txt
+Run fdisk on SATA drive,sudo fdisk /dev/sda
+Change to the directory /usr/local/var,cd /usr/local/var
+List all files with details, sorted by modification time, but show access time instead,ls --time-style=+'%Y-%m-%d %H:%M' -lt --sort=time-accessed
+Create a file called 'access.log' in /var/log,touch /var/log/access.log
+Redirect output to file,echo "Your commands here" >> output.txt
+Schedule job at 6 PM only in December,echo "(0 18 * 12 *) /path/to/your/command" | sudo tee -a /etc/crontab > /dev/null
+Delay 2.75 minutes,sleep 165
+Query A record for google.com and use only IPv4,dig -t A +short google.com
+Run mtr to 8.8.8.8 and set maximum TTL to 80,mtr --max-hops=80 8.8.8.8
+Ping google.com with 512 byte packets and 10 times,ping -s 512 -c 10 google.com
+Traceroute to google.com using UDPLITE protocol,traceroute -sS -p 5001 google.com
+Change niceness of gvfs daemon,sudo killall -USR1 gvfsd-exa
+echo '10' | sudo tee /proc/sys/kernel/sched_autogroup_enabled
+nice -n 10 gvfsd &
+Display disk usage for all files and directories, using block size of 16G,du -sh --block-size=16G *
+Run atop and display only memory activity,atop -d 1 | awk 'NR>2 {print $3}'
+Delete test_group7,rm -rf test_group7
+Switch to deployer,Whoami
+Show only remote users,who | grep 'not logged in'
+get last created csv filename,ls -t *.csv | head -n 1
+open with default app results_1768924654671666.csv,xdg-open results_1768924654671666.csv
+mlr cat csv with different row lengths,mlr --csv cat input1.csv input2.csv input3.csv > combined.csv
+Compress the file data.txt using bzip2,bzip2 data.txt
+Run fdisk on SATA drive,fdisk /dev/sdX
+Change to the directory /usr/local/var,cd /usr/local/var
+List all files with details, sorted by modification time, but show access time instead,ls -lt --time-style="+%Y-%m-%d %H:%M:%S"
+Create a file called 'access.log' in /var/log,touch /var/log/access.log
+Redirect output to file,echo "command_to_run" > output.txt
+Schedule job at 6 PM only in December,(crontab -l; echo "0 18 * 12 * /path/to/your/command") | crontab -
+Delay 2.75 minutes,sleep 165
+Query A record for google.com and use only IPv4,dig +short A google.com
+Run mtr to 8.8.8.8 and set maximum TTL to 80,mtr --max-ttl=80 8.8.8.8
+Ping google.com with 512 byte packets and 10 times,ping -s 512 -c 10 google.com
+Traceroute to google.com using UDPLITE protocol,traceroute -4P udp lite.google.com 53
+Change niceness of gvfs daemon,sudo renice -n 10 -p $(pgrep -f gvfs)
+Display disk usage for all files and directories, using block size of 16G,du -h --block-size=16g /path/to/directory
+Run atop and display only memory activity,atop -d 1 1 | awk '/^(M)/ {print $0}'
+Delete test_group7,rm -rf test_group7
+Switch to deployer,su - deployer
+Show only remote users,who | grep -v
+get google IPv4,curl -s https://ip.goo.gl | awk '{print $2}'
+Compress the file data.txt using bzip2,bzip2 data.txt
+Run fdisk on SATA drive,fdisk /dev/sda
