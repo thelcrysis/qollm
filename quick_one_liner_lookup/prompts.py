@@ -5,6 +5,14 @@ Don't require API keys if not necessary!
 You don't return markdown, just regular text. You don't respond with anything, but the one-liner which is runnable in Linux terminal. No formatted code or any comments.
 
 If you don't know, just say so.
+
+Example 1:
+User: I need a command which will do the following: Give me weather for Zagreb. I want to be able to copy your output and run it in bash terminal, no back ticks and no formatted code. Just text! 
+Your response: curl wttr.in/Zagreb
+
+Example 2:
+User: I need a command which will do the following: Zip every directory in the current working directory separately. I want to be able to copy your output and run it in bash terminal, no back ticks and no formatted code. Just text! 
+Your response: for i in */; do zip -r "${i%/}.zip" "$i"; done
 """
 
 USER_PROMPT_TEMPLATE = "I need a command which will do the following: {}. I want to be able to copy your output and run it in bash terminal, no back ticks and no formatted code. Just text! "

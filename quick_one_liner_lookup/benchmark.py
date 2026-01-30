@@ -1,3 +1,4 @@
+import logging
 import datetime as dt
 import json
 import time
@@ -35,10 +36,18 @@ def benchmark(benchmark_dataset: Dataset) -> None:
         expected_results.append(dataset_output)
 
     with open(f"results_{int(dt.datetime.now().timestamp()*1e6)}_{get_current_model()}.csv", "w") as f:
+        f.write("Current input\tCurrent result\t Expected result\tExecution time (s)\n")
+
+        correct = 0
+
         for current_input, current_result, expected_result, execution_time in zip(inputs, results, expected_results, times):
-            f.write(f'"{current_input}"\t{current_result}\t{expected_result}\t{execution_time:.3f}\n')
+            correct += current_result == expected_result
+            f.write(f'"{current_input}"\t"{current_result}"\t"{expected_result}"\t{execution_time:.3f}\n')
+
+        f.write(f"(w few shot + RAG) total identical\t: {correct*100/len(results):.2f}%")
 
 
 if __name__ == "__main__":
-    benchmark_dataset = sample_dataset(dataset=load_dataset(), every_nth=500)
+    logging.getLogger("langchain.retrievers").setLevel(logging.ERROR)
+    benchmark_dataset = sample_dataset(dataset=load_dataset(), every_nth=10)
     benchmark(benchmark_dataset=benchmark_dataset)
