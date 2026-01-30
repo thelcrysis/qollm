@@ -1,0 +1,57 @@
+Description,Command
+List files with human‑readable sizes,ls -lh
+Show disk usage of each item in directory,du -sh *
+Find all .log files recursively,"find . -type f -name ""*.log"""
+Find files modified in last 24 hours,find . -type f -mtime -1
+Recursively copy directory,cp -r dir1 dir2
+Force delete directory recursively,rm -rf dir
+Search recursively for text,"grep -R ""error"" /var/log"
+Case-insensitive search,"grep -i ""warning"" file.txt"
+Print first column,awk '{print $1}' file.txt
+Replace text using sed,sed 's/foo/bar/g' file.txt
+Extract first field from passwd,cut -d: -f1 /etc/passwd
+Show memory usage,free -h
+Show disk usage,df -h
+System uptime and load,uptime
+Real-time process viewer,top
+Enhanced process viewer,htop
+Show network interfaces,ip a
+List listening ports,ss -tuln
+Ping host 4 times,ping -c 4 google.com
+Fetch HTTP headers,curl -I https://example.com
+Resume download,wget -c URL
+List all processes,ps aux
+Find process by name,ps aux | grep nginx
+Kill process by PID,kill -9 PID
+Kill process by name,pkill firefox
+Zip single file,zip archive.zip file.txt
+Zip directory recursively,zip -r archive.zip folder/
+Zip with max compression,zip -9 -r archive.zip folder/
+Exclude files while zipping,"zip -r archive.zip folder -x ""*.log"""
+Unzip archive,unzip archive.zip
+List zip contents,unzip -l archive.zip
+Password-protected zip,zip -e archive.zip secret.txt
+Create tar.gz archive,tar -czvf archive.tar.gz folder/
+Create tar.bz2 archive,tar -cjvf archive.tar.bz2 folder/
+Create tar.xz archive,tar -cJvf archive.tar.xz folder/
+Extract tar.gz archive,tar -xzvf archive.tar.gz
+List tar contents,tar -tf archive.tar.gz
+Exclude files in tar,"tar -czvf archive.tar.gz folder --exclude=""*.log"""
+Tar with progress bar,tar -cf - folder | pv | gzip > archive.tar.gz
+Multi-core gzip compression,tar -I pigz -cf archive.tar.gz folder
+Pass stdin as arguments,"printf ""%s\n"" a b c | xargs echo"
+Delete files safely with spaces,find . -type f -print0 | xargs -0 rm
+Zip files found by find,"find . -name ""*.log"" | xargs zip logs.zip"
+Safe zip with spaces,"find . -name ""*.txt"" -print0 | xargs -0 zip texts.zip"
+Zip recently modified files,find . -type f -mtime -1 | xargs zip recent.zip
+Create tar from selected files,"find . -name ""*.conf"" | xargs tar -czvf configs.tar.gz"
+One tar per directory,"find . -maxdepth 1 -type d ! -name ""."" | xargs -n1 tar -czvf"
+Parallel xargs execution,"find . -name ""*.csv"" | xargs -P4 -n1 zip data.zip"
+Show top CPU processes,"ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head"
+Live memory hog view,"watch -n1 ""ps -eo pid,%mem,cmd --sort=-%mem | head"""
+Find process using port,lsof -i :8080
+Trace system calls,strace -p PID
+Largest files in directory,du -ah /var | sort -hr | head
+Find SUID binaries,find / -perm -4000 -type f 2>/dev/null
+Generate random password,cat /dev/urandom | tr -dc 'a-z0-9' | head -c 32
+Timestamped backup,tar -czvf backup-$(date +%F).tar.gz folder/
